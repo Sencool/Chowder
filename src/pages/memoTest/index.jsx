@@ -4,9 +4,10 @@ function SubCounter({ onClick, data }) {
     console.log('SubCounter render')
     return <button onClick={onClick}>{data.number}</button>
 }
-SubCounter = memo(SubCounter)
+const SubCounterMemo = memo(SubCounter)
 
 let oldData, oldAddClick
+
 export default function Counter2() {
     console.log('Counter render')
     const [name, setName] = useState('计数器')
@@ -33,7 +34,7 @@ export default function Counter2() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
-            <SubCounter data={data} onClick={addClick} />
+            <SubCounterMemo data={data} onClick={addClick} />
         </>
     )
 }

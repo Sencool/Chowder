@@ -8,8 +8,12 @@ const nav = [
         to: '/hook',
     },
     {
-        name: '1',
-        to: '/1',
+        name: 'memoTest',
+        to: '/memo-test',
+    },
+    {
+        name: 'closures',
+        to: '/closures',
     },
 ]
 
