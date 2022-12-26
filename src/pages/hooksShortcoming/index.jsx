@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-const Counter = () => {
+function Counter () {
     const [counter, setCounter] = useState(0)
     const counterRef = useRef(counter)
     const onAlertButtonClick = () => {
