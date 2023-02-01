@@ -132,7 +132,7 @@ module.exports = {
     },
     devServer: {
         host: 'localhost',
-        port: 3000,
+        port: 8888,
         open: true, //自动打开浏览器
         hot: true, //热模块替换
         historyApiFallback: true, // 解决路由刷新404
