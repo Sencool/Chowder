@@ -16,17 +16,21 @@ export default function Counter2() {
     // 所以子组件也会随之更新，这时候可以用到 useMemo
     // 有没有后面的依赖项数组很重要，否则还是会重新渲染
     // 如果后面的依赖项数组没有值的话，即使父组件的 number 值改变了，子组件也不会去更新
-    //const data = useMemo(()=>({number}),[]);
+    // const data = useMemo(()=>({number}),[]);
     const data = useMemo(() => ({ number }), [number])
     console.log('data===oldData ', data === oldData)
     oldData = data
 
     // 有没有后面的依赖项数组很重要，否则还是会重新渲染
     const addClick = useCallback(() => {
+        // 此处会缓存number，如果依赖项没有改变，则number不会跟着外面的state一起改变
+        // 例子：此处依赖为空，则此处number会永远为0，外面会的number会从0变为1，然后一直为1
         setNumber(number + 1)
-    }, [number])
+    }, [])
     console.log('addClick===oldAddClick ', addClick === oldAddClick)
     oldAddClick = addClick
+
+
     return (
         <>
             <input
