@@ -13,24 +13,30 @@ function VirtualList({
     }
     const [displayData, setDisplayData] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9])
     const [cacheData, setCacheData] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    const [flag, setFlag] = useState(true)
     const container = useRef(null)
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
         const { innerHeight, pageYOffset } = window
         const { scrollHeight } = document.body
         if (scrollHeight - (innerHeight + pageYOffset) < 50) {
-            loadMore().then((data) => {
-                if (Array.isArray(data)) {
-                    setCacheData([...cacheData, ...data])
-                } else {
-                    throw new Error('data is not a array')
-                }
-            })
+            if (flag) {
+                setFlag(false)
+                loadMore()
+                    .then((data) => {
+                        setFlag(true)
+                        if (Array.isArray(data)) {
+                            setCacheData([...cacheData, ...data])
+                        } else {
+                            throw new Error('data is not a array')
+                        }
+                    })
+            }
         }
-    }
+    },1000)
     useEffect(() => {
-        window.addEventListener('scroll', throttle(handleScroll, 1000))
+        window.addEventListener('scroll', handleScroll)
         return () => {
-            window.removeEventListener('scroll', throttle(handleScroll, 1000))
+            window.removeEventListener('scroll', handleScroll)
         }
     }, [cacheData])
     return (
