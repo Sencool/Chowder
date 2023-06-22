@@ -6,9 +6,12 @@ import Routers from './routers.jsx'
 import styles from './app.scss'
 import './basic.css'
 
+export const UserContext = React.createContext('')
+
 function App() {
     return (
         <div>
+        <UserContext.Provider value={'chuanshi'}>
             {/* <GetCodeButton /> */}
             <div className={styles.nav}>
                 {nav.map((item) => {
@@ -21,6 +24,7 @@ function App() {
                 })}
             </div>
             <Routers />
+        </UserContext.Provider>
         </div>
     )
 }

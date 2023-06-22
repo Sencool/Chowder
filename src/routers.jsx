@@ -4,6 +4,7 @@ import Home from './pages/home'
 import HooksShortcoming from './pages/hooksShortcoming'
 import Counter from './pages/memoTest'
 import Closures from './pages/Closures'
+import ContextPritice from './pages/contextPritice'
 
 const Routers = () => {
     return (
@@ -13,6 +14,7 @@ const Routers = () => {
             <Route path="/hooks" element={<HooksShortcoming />}></Route>
             <Route path="/memo-test" element={<Counter />}></Route>
             <Route path="/closures" element={<Closures />}></Route>
+            <Route path="/ContextPritice" element={<ContextPritice />}></Route>
         </Routes>
     )
 }

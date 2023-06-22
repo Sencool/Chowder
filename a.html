@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function convertTree(arr){
+    const result = []
+    arr.forEach(item=>{
+        const {parentId,id}  = item || {}
+        if(parentId===0){
+            const children = []
+            arr.filter(it=>it?.parentId===id){
+                children.push(it)
+            }
+            result.push({
+                ...item,
+                children
+            })
+        }
+    })
+}
+
+const a = [
+    {
+        parentId:0,
+        id:1
+    },
+    {
+        parentId:0,
+        id:2
+    },
+    {
+        parentId:0,
+        id:3
+    },{
+        parentId:0,
+        id:4
+    },
+    {
+        parentId:0,
+        id:1
+    },
+    {
+        parentId:1,
+        id:1
+    },
+    {
+        parentId:2,
+        id:1
+    },
+    {
+        parentId:3,
+        id:1
+    },
+    {
+        parentId:0,
+        id:1
+    },
+    {
+        parentId:4,
+        id:1
+    },
+    {
+        parentId:1,
+        id:1
+    },
+]
+
+console.log(convertTree(a))
+</script>
+</html>
