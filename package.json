@@ -37,6 +37,7 @@
   "dependencies": {
     "@antv/f2": "^4.0.25",
     "@antv/f2-react": "^4.0.25",
+    "antd": "^5.3.0",
     "classnames": "^2.3.1",
     "copy-webpack-plugin": "^11.0.0",
     "css-minimizer-webpack-plugin": "^4.0.0",
